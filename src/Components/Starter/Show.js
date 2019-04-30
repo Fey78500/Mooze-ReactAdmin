@@ -1,12 +1,12 @@
 import React from 'react';
-import { Show, SimpleShowLayout, TextField, DateField, EditButton, RichTextField } from 'react-admin';
+import { Show, SimpleShowLayout, TextField,ImageField, DateField, EditButton, RichTextField } from 'react-admin';
 
 export const StarterShow = (props) => (
     <Show title="Color Show" {...props}>
         <SimpleShowLayout>
-            <TextField source="red" />
-            <TextField source="blue"/>
-            <TextField source="green"/>
+            <ImageField  source="starterPictureUrl" />
+            <TextField source="starterName" />
+            <TextField source="starterPrice" />
         </SimpleShowLayout>
     </Show>
 );

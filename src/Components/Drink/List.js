@@ -4,8 +4,8 @@ import { List, Datagrid, TextField,ImageField,EditButton,ShowButton  } from 'rea
 export const DrinkList = (props) => (
     <List {...props}>
         <Datagrid>
-            <ImageField source="drinkPictureUrl" />
-            <TextField source="drinkName" />
+            <ImageField source="mainPictureUrl" />
+            <TextField source="drinkPrice" />
             <TextField source="drinkPrice" />
             <ShowButton/>
             <EditButton />

@@ -8,12 +8,14 @@
     "firebase": "^5.9.2",
     "prop-types": "^15.7.2",
     "ra-auth-firebase": "^1.0.2",
+    "ra-data-firebase-client": "^0.1.6",
     "ra-data-json-server": "^2.8.3",
     "react": "^16.8.6",
     "react-admin": "^2.8.3",
     "react-admin-firebase": "^0.3.2",
     "react-dom": "^16.8.6",
-    "react-scripts": "2.1.8"
+    "react-scripts": "2.1.8",
+    "recharts": "^1.5.0"
   },
   "scripts": {
     "start": "react-scripts start",

@@ -1,7 +1,8 @@
 import React from 'react';
-import { List, Datagrid, BooleanField,ShowButton,CardActions,ExportButton  } from 'react-admin';
+import { List, Datagrid,TextField, BooleanField,ShowButton,CardActions,ExportButton  } from 'react-admin';
 import { OrderEdit } from './Edit';
-
+import {LineGraph} from '../Charts/LineChart';
+import BarGraph from '../Charts/BarChart';
 
 const PostActions = ({
     currentSort,
@@ -20,15 +21,21 @@ const PostActions = ({
         />
     </CardActions>
 );
-
 export const OrderList = (props) => (
+    <div>
+        <List {...props} actions={<PostActions />}>
+            <Datagrid expand={<OrderEdit />}>
+                <BooleanField source="checkedOut" />
+                <BooleanField source="paid" />
+                <TextField source="updatedAt" />
+                <ShowButton/>
+            </Datagrid>
+        </List>
+        <h2>Graphique des ventes</h2>
+        <LineGraph source={{...props}}/>
 
+        <h2>Graphique nombre de couvert par jour de semaine</h2>
+        <BarGraph source={{...props}}/>
+    </div>
     
-    <List {...props} actions={<PostActions />}>
-        <Datagrid expand={<OrderEdit />}>
-            <BooleanField source="checkedOut" />
-            <BooleanField source="paid" />
-            <ShowButton/>
-        </Datagrid>
-    </List>
 );

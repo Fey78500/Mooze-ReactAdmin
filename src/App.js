@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { Admin, Resource } from 'react-admin';
-import addUploadFeature from './addUploadFeature';
  
 import { ExtraShow } from './Components/Extra/Show';
 import { ExtraEdit } from './Components/Extra/Edit';
@@ -42,11 +41,15 @@ import { TableEdit } from './Components/Table/Edit';
 import { TableCreate } from './Components/Table/Create';
 import { TableList } from './Components/Table/List';
 
+import { RatingShow } from './Components/Rating/Show';
+import { RatingEdit } from './Components/Rating/Edit';
+import { RatingCreate } from './Components/Rating/Create';
+import { RatingList } from './Components/Rating/List';
+
 import PersonIcon from '@material-ui/icons/Person';
 import DonutIcon from '@material-ui/icons/DonutLarge';
-
-import { RestClient,AuthClient } from 'aor-firebase-client';
-import firebase from "firebase";
+import StarIcon from '@material-ui/icons/Star';
+import { RestProvider, AuthProvider, base64Uploader } from 'ra-data-firebase-client';
 
 const firebaseConfig = {
   apiKey: process.env.REACT_APP_API_KEY,
@@ -57,75 +60,60 @@ const firebaseConfig = {
   messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_ID
 };
 
-const restClientOptions = {
-  trackedResources: [
-    {
-      name: "orders", // The display/reference name for this resource
-      isPublic: true, // Does it require auth? True by default!
-    },
-    {
-      name: "users",
-      isPublic: true
-    },
-    {
-      name: "drinks",
-      isPublic: true
-    },
-    {
-      name: "mains",
-      path:"moozemains",
-      isPublic: true
-    },
-    {
-      name: "extras",
-      isPublic: true
-    },
-    {
-      name: "restos",
-      isPublic: true,
-      uploadFields: ['restaurantPictureUrl','src']
-    },
-    {
-      name: "starters",
-      isPublic: true
-    },
-    {
-      name: "tables",
-      isPublic: true
-    }
-  ],
-  // Additional options
-  options: {
-    initialQuerytimeout: 10000,
-    timestampFieldNames: {
-      createdAt: "createdAt",
-      updatedAt: "updatedAt"
-    },
-    firebasePersistence: firebase.auth.Auth.Persistence.SESSION,
-    methods: {
-      // Allows to override internal methods to customize behavior
-      // postRead: entry => {
-      //   entry.id = isNaN(entry.id) ? entry.id : parseInt(entry.id);
-      //   return entry;
-      // }
-    }
+const trackedResources = [
+  {
+    name: "orders", // The display/reference name for this resource
+    isPublic: true, // Does it require auth? True by default!
+  },
+  {
+    name: "users",
+    isPublic: true
+  },
+  {
+    name: "drinks",
+    isPublic: true
+  },
+  {
+    name: "ratings",
+    isPublic: true
+  },
+  {
+    name: "mains",
+    path:"moozemains",
+    isPublic: true
+  },
+  {
+    name: "extras",
+    isPublic: true
+  },
+  {
+    name: "restos",
+    isPublic: true
+  },
+  {
+    name: "starters",
+    isPublic: true
+  },
+  {
+    name: "tables",
+    isPublic: true
   }
+];
+
+const authConfig = {
+  userProfilePath: '/users/',
+  userAdminProp: 'admin'//check if user is admin
 };
 
-const authClientOptions = {
-  firebaseConfig,
-  firebasePersistence: firebase.auth.Auth.Persistence.SESSION,
-  userProfilePath: 'users',
-  userAdminProp: 'admin'
-}
-const shouldUseAuth = true; // !(window && window.location && window.location.search && window.location.search === '?security=0')
+const shouldUseAuth = true;
+const dataProvider = base64Uploader(RestProvider(firebaseConfig, { trackedResources }));
+
 class App extends React.Component {
   render() {
     return (
       <Admin 
-        dataProvider={addUploadFeature(RestClient(firebaseConfig, restClientOptions))}
-        authProvider={shouldUseAuth ? AuthClient(authClientOptions) : null}
-      >
+        dataProvider={dataProvider}
+        authProvider={shouldUseAuth ? AuthProvider(authConfig) : null}>
         <Resource name="extras" list={ExtraList} create={ExtraCreate} edit={ExtraEdit} show={ExtraShow} icon={DonutIcon}/>
         <Resource name="drinks" list={DrinkList} create={DrinkCreate} edit={DrinkEdit} show={DrinkShow}/>
         <Resource name="mains" list={MainList} create={MainCreate} edit={MainEdit} show={MainShow}/>
@@ -134,6 +122,8 @@ class App extends React.Component {
         <Resource name="orders" list={OrderList} create={OrderCreate} edit={OrderEdit} show={OrderShow}/>
         <Resource name="users" list={UserList} create={UserCreate} edit={UserEdit} show={UserShow} icon={PersonIcon}/>
         <Resource name="tables" list={TableList} create={TableCreate} edit={TableEdit} show={TableShow}/>
+        <Resource name="ratings" list={RatingList} create={RatingCreate} edit={RatingEdit} show={RatingShow} icon={StarIcon}/>
+
       </Admin>
     );
   }

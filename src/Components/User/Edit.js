@@ -1,13 +1,13 @@
 import React from 'react';
-import {Edit, SimpleForm, DisabledInput, TextInput } from 'react-admin';
+import {Edit, SimpleForm, DisabledInput, TextInput,BooleanInput } from 'react-admin';
 
 
 export const UserEdit = (props) => (
     <Edit title="Color Edition" {...props}>
         <SimpleForm>
-            <TextInput source="red" />
-            <TextInput source="blue"/>
-            <TextInput source="green"/>
+            <TextInput source="displayName" />
+            <TextInput source="email" />
+            <BooleanInput source="admin" />
         </SimpleForm>
     </Edit>
 );
