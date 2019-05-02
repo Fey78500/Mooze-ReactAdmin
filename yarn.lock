@@ -9125,6 +9125,13 @@ react-event-listener@^0.6.2:
     prop-types "^15.6.0"
     warning "^4.0.1"
 
+react-google-charts@^3.0.12:
+  version "3.0.12"
+  resolved "https://registry.yarnpkg.com/react-google-charts/-/react-google-charts-3.0.12.tgz#e74a20cff33a6737c77eaae6d4926ba6a9b43542"
+  integrity sha512-+jzK34PpQJ2hLpj3qOVBTHX1eS9JIuP7rQwNlU5KTXExHJpxNbGBYmNLmMeZCbsipkz3V6cN7uI4QG+SNG/9OQ==
+  dependencies:
+    react-load-script "^0.0.6"
+
 react-headroom@^2.2.4:
   version "2.2.8"
   resolved "https://registry.yarnpkg.com/react-headroom/-/react-headroom-2.2.8.tgz#68c1233262efe028c591b9096c522207362ad133"
@@ -9154,6 +9161,11 @@ react-lifecycles-compat@^3.0.2, react-lifecycles-compat@^3.0.4:
   version "3.0.4"
   resolved "https://registry.yarnpkg.com/react-lifecycles-compat/-/react-lifecycles-compat-3.0.4.tgz#4f1a273afdfc8f3488a8c516bfda78f872352362"
   integrity sha512-fBASbA6LnOU9dOU2eW7aQ8xmYBSXUIWr+UmF9b1efZBazGNO+rcXT/icdKnYm2pTwcRylVUYwW7H1PHfLekVzA==
+
+react-load-script@^0.0.6:
+  version "0.0.6"
+  resolved "https://registry.yarnpkg.com/react-load-script/-/react-load-script-0.0.6.tgz#db6851236aaa25bb622677a2eb51dad4f8d2c258"
+  integrity sha512-aRGxDGP9VoLxcsaYvKWIW+LRrMOzz2eEcubTS4NvQPPugjk2VvMhow0wWTkSl7RxookomD1MwcP4l5UStg5ShQ==
 
 react-redux@~5.0.4, react-redux@~5.0.7:
   version "5.0.7"

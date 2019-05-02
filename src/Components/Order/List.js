@@ -2,7 +2,7 @@ import React from 'react';
 import { List, Datagrid,TextField, BooleanField,ShowButton,CardActions,ExportButton  } from 'react-admin';
 import { OrderEdit } from './Edit';
 import {LineGraph} from '../Charts/LineChart';
-import BarGraph from '../Charts/BarChart';
+import {BarGraph} from '../Charts/BarChart';
 
 const PostActions = ({
     currentSort,

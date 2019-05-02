@@ -1,63 +1,77 @@
-import React, { Component } from 'react';
-import {LineChart, Line, XAxis, YAxis, ReferenceLine,
-  ReferenceDot, Tooltip, CartesianGrid, Legend, Brush, ErrorBar, AreaChart, Area,
-  Label, LabelList , ResponsiveContainer} from 'recharts';
-import { scalePow, scaleLog } from 'd3-scale';
+import React from 'react';
 import { connect } from 'react-redux';
-import { getFormValues } from 'redux-form';
-import { ListController, Title } from 'react-admin';
+import { ListController } from 'react-admin';
+import { Chart } from "react-google-charts";
 
-let data = [
-  {"date":"19/05","totalAmount":150},
-  {"date":"29/05","totalAmount":850},
-  {"date":"02/06","totalAmount":1000}
+// let data = [
+//   {"date":"19/05","totalAmount":150},
+//   {"date":"29/05","totalAmount":850},
+//   {"date":"02/06","totalAmount":1000}
+// ];
+
+const options = {
+  title: "",
+  hAxis: { title: "updatedAt" },
+  vAxis: { title: "totalAmount", viewWindow: { min: 0 } },
+  legend: "none"
+};
+let graphData = [
+  // ["Date","Amount"],
+  // [1,8],
+  // [2,4],
+  // [3,11],
+  // [4,4],
+  // [5,3],
+  // [6,6]
 ];
 
+let keys;
+let values;
+let hadData = false;
+function getData(data){
+  {keys = Object.keys(data).map(function (i) {
+    return Object.keys(data[i]).slice(9,11).reverse();
+  })}
+  {values = Object.keys(data).map(function (i) {
+    let date = data[i].updatedAt;
+    date = new Date(date);
+    let year = date.getUTCFullYear();
+    // Minutes part from the timestamp
+    let month = date.getMonth() + 1;
+    // Seconds part from the timestamp
+    let day = date.getDate();
+    data[i].updatedAt = day + '/' + month + '/' + year;
+    return Object.values(data[i]).slice(9,11).reverse();//
+  })}
+  //let test =[keys[0][9],keys[0][10]]
+  graphData = keys[0]
+  
+  if(graphData !== undefined && graphData.length !== 0){
+    values.unshift(keys[0]);
+    graphData = values;
+    hadData = true;
+    console.log(graphData);
+  }
+}
 export const LineGraph = (props) => (
   <ListController {...props.source}>
         {controllerProps => (
             <>
-            {/* {console.log(data)}
-            {data = Object.keys(controllerProps.data).map(function (i) {
-              return controllerProps.data[i];
-            })}
-            {console.log(data)};
-            {data != [] && */}
-            <ResponsiveContainer height={300} width="95%">
-              <LineChart
-                data={data}
-                margin={{ top: 5, right: 20, left: 10, bottom: 5 }}>
-                <XAxis dataKey="date" />
-                <YAxis type="number" dataKey="totalAmount" />
-                <Tooltip />
-                <CartesianGrid stroke="#f5f5f5" />
-                <Line type="monotone" dataKey="totalAmount" stroke="#ff7300" yAxisId={0} />
-              </LineChart>
-            </ResponsiveContainer>
-            {/* } */}
+            {!hadData && getData(controllerProps.data)}
+            {graphData !== undefined && graphData.length !== 0 && 
+              <Chart
+                chartType="LineChart"
+                data={graphData}
+                options={options}
+                width="100%"
+                height="400px"
+                legendToggle
+              />
+            }
             </>
         )}
       
   </ListController>
-
-
-      /*<LineChart
-          width={400}
-          height={400}
-          data={data}
-          margin={{ top: 5, right: 20, left: 10, bottom: 5 }}
-      >
-      {test = props.source}
-      {test.map(resource => (
-        console.log(resource)
-      ))}
-          <XAxis dataKey="name" />
-          <Tooltip />
-          <CartesianGrid stroke="#f5f5f5" />
-          <Line type="monotone" dataKey="uv" stroke="#ff7300" yAxisId={0} />
-          <Line type="monotone" dataKey="pv" stroke="#387908" yAxisId={1} />
-      </LineChart>*/
-    
 );
 
 
