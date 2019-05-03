@@ -47,8 +47,15 @@ import { RatingCreate } from './Components/Rating/Create';
 import { RatingList } from './Components/Rating/List';
 
 import PersonIcon from '@material-ui/icons/Person';
-import DonutIcon from '@material-ui/icons/DonutLarge';
+import AddCircleIcon from '@material-ui/icons/AddCircle';
 import StarIcon from '@material-ui/icons/Star';
+import MonetizationOnIcon from '@material-ui/icons/MonetizationOn';
+import LocalDrinkIcon from '@material-ui/icons/LocalDrink';
+import LocalDiningIcon from '@material-ui/icons/LocalDining';
+import LocalPizzaIcon from '@material-ui/icons/LocalPizza';
+import RestaurantIcon from '@material-ui/icons/Restaurant';
+import ViewCarouselIcon from '@material-ui/icons/ViewCarousel';
+
 import { RestProvider, AuthProvider, base64Uploader } from 'ra-data-firebase-client';
 
 const firebaseConfig = {
@@ -61,43 +68,15 @@ const firebaseConfig = {
 };
 
 const trackedResources = [
-  {
-    name: "orders", // The display/reference name for this resource
-    isPublic: true, // Does it require auth? True by default!
-  },
-  {
-    name: "users",
-    isPublic: true
-  },
-  {
-    name: "drinks",
-    isPublic: true
-  },
-  {
-    name: "ratings",
-    isPublic: true
-  },
-  {
-    name: "mains",
-    path:"moozemains",
-    isPublic: true
-  },
-  {
-    name: "extras",
-    isPublic: true
-  },
-  {
-    name: "restos",
-    isPublic: true
-  },
-  {
-    name: "starters",
-    isPublic: true
-  },
-  {
-    name: "tables",
-    isPublic: true
-  }
+  {name: "orders",isPublic: true,},
+  {name: "users",isPublic: true},
+  {name: "drinks",isPublic: true},
+  {name: "ratings",isPublic: true},
+  {name: "mains",path:"moozemains",isPublic: true},
+  {name: "extras",isPublic: true},
+  {name: "restos",isPublic: true},
+  {name: "starters",isPublic: true},
+  {name: "tables",isPublic: true}
 ];
 
 const authConfig = {
@@ -114,14 +93,14 @@ class App extends React.Component {
       <Admin 
         dataProvider={dataProvider}
         authProvider={shouldUseAuth ? AuthProvider(authConfig) : null}>
-        <Resource name="extras" list={ExtraList} create={ExtraCreate} edit={ExtraEdit} show={ExtraShow} icon={DonutIcon}/>
-        <Resource name="drinks" list={DrinkList} create={DrinkCreate} edit={DrinkEdit} show={DrinkShow}/>
-        <Resource name="mains" list={MainList} create={MainCreate} edit={MainEdit} show={MainShow}/>
-        <Resource name="restos" list={RestoList} create={RestoCreate} edit={RestoEdit} show={RestoShow}/>
-        <Resource name="starters" list={StarterList} create={StarterCreate} edit={StarterEdit} show={StarterShow}/>
-        <Resource name="orders" list={OrderList} create={OrderCreate} edit={OrderEdit} show={OrderShow}/>
+        <Resource name="extras" list={ExtraList} create={ExtraCreate} edit={ExtraEdit} show={ExtraShow} icon={AddCircleIcon}/>
+        <Resource name="drinks" list={DrinkList} create={DrinkCreate} edit={DrinkEdit} show={DrinkShow} icon={LocalDrinkIcon}/>
+        <Resource name="mains" list={MainList} create={MainCreate} edit={MainEdit} show={MainShow} icon={LocalPizzaIcon}/>
+        <Resource name="restos" list={RestoList} create={RestoCreate} edit={RestoEdit} show={RestoShow} icon={RestaurantIcon}/>
+        <Resource name="starters" list={StarterList} create={StarterCreate} edit={StarterEdit} show={StarterShow} icon={LocalDiningIcon}/>
+        <Resource name="orders" list={OrderList} create={OrderCreate} edit={OrderEdit} show={OrderShow} icon={MonetizationOnIcon}/>
         <Resource name="users" list={UserList} create={UserCreate} edit={UserEdit} show={UserShow} icon={PersonIcon}/>
-        <Resource name="tables" list={TableList} create={TableCreate} edit={TableEdit} show={TableShow}/>
+        <Resource name="tables" list={TableList} create={TableCreate} edit={TableEdit} show={TableShow} icon={ViewCarouselIcon}/>
         <Resource name="ratings" list={RatingList} create={RatingCreate} edit={RatingEdit} show={RatingShow} icon={StarIcon}/>
 
       </Admin>

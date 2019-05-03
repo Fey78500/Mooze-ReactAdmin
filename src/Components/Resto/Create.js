@@ -9,7 +9,7 @@ export const RestoCreate = (props) => (
                 <ImageField source="src" title="title" />
             </ImageInput>
             <TextInput source="restaurantName" />
-
+            <TextInput source="restaurantType" />
         </SimpleForm>
     </Create>
 );

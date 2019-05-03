@@ -7,6 +7,7 @@ export const RestoList = (props) => (
             <ImageField source="restaurantPictureUrl" />
             <TextField source="restaurantName" />
             <TextField source="restaurantAddress" />
+            <TextField source="restaurantType" />
             <ShowButton/>
             <EditButton />
         </Datagrid> 

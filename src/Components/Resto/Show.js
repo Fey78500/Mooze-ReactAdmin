@@ -6,6 +6,7 @@ export const RestoShow = (props) => (
         <SimpleShowLayout>
             <ImageField source="restaurantPictureUrl" />
             <TextField source="restaurantName" />
+            <TextField source="restaurantType" />
         </SimpleShowLayout>
     </Show>
 );

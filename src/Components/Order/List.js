@@ -1,5 +1,5 @@
 import React from 'react';
-import { List, Datagrid,TextField, BooleanField,ShowButton,CardActions,ExportButton  } from 'react-admin';
+import { List, Datagrid,DateField, BooleanField,ShowButton,CardActions,ExportButton  } from 'react-admin';
 import { OrderEdit } from './Edit';
 import {LineGraph} from '../Charts/LineChart';
 import {BarGraph} from '../Charts/BarChart';
@@ -25,9 +25,10 @@ export const OrderList = (props) => (
     <div>
         <List {...props} actions={<PostActions />}>
             <Datagrid expand={<OrderEdit />}>
-                <BooleanField source="checkedOut" />
-                <BooleanField source="paid" />
-                <TextField source="updatedAt" />
+                <BooleanField source="paid" label="Payé ?"/>
+                <BooleanField source="checkedOut" label="Préparé ?"/>
+                <BooleanField source="delivered" label="Livré ?"/>
+                <DateField source="createdAt" label="Date"/>
                 <ShowButton/>
             </Datagrid>
         </List>

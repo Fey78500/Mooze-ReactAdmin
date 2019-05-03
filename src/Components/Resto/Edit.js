@@ -9,6 +9,7 @@ export const RestoEdit = (props) => (
             </ImageInput>
             <TextInput source="restaurantName" />
             <TextInput source="restaurantAddress" />
+            <TextInput source="restaurantType" />
         </SimpleForm>
     </Edit>
 );
