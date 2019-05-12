@@ -1,14 +1,13 @@
 // in src/posts.js
 import React from 'react';
-import { Create, Edit, SimpleForm, DisabledInput, TextInput, DateInput, LongTextInput, ReferenceManyField, Datagrid, TextField, DateField, EditButton } from 'react-admin';
+import { Create, Edit, SimpleForm, DisabledInput, TextInput, BooleanInput, LongTextInput, ReferenceManyField, Datagrid, TextField, DateField, EditButton } from 'react-admin';
 
 export const UserCreate = (props) => (
-    <Create {...props}>
+    <Create title="Création d'un utilisateur" {...props}>
         <SimpleForm>
-            <TextInput source="red" />
-            <TextInput source="blue"/>
-            <TextInput source="green"/>
-
+            <TextInput source="displayName" label="Nom"/>
+            <TextInput source="email" label="Email"/>
+            <BooleanInput source="admin" label="Admin"/>
         </SimpleForm>
     </Create>
 );

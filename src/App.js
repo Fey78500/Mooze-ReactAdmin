@@ -46,6 +46,7 @@ import { RatingEdit } from './Components/Rating/Edit';
 import { RatingCreate } from './Components/Rating/Create';
 import { RatingList } from './Components/Rating/List';
 
+/* Icone */
 import PersonIcon from '@material-ui/icons/Person';
 import AddCircleIcon from '@material-ui/icons/AddCircle';
 import StarIcon from '@material-ui/icons/Star';
@@ -56,8 +57,12 @@ import LocalPizzaIcon from '@material-ui/icons/LocalPizza';
 import RestaurantIcon from '@material-ui/icons/Restaurant';
 import ViewCarouselIcon from '@material-ui/icons/ViewCarousel';
 
-import { RestProvider, AuthProvider, base64Uploader } from 'ra-data-firebase-client';
+import { RestProvider, AuthProvider } from 'ra-data-firebase-client';
+import addUploadCapability from './Base64Uploader'
 
+import frenchMessages from 'ra-language-french';
+
+/* Configuration firebase */
 const firebaseConfig = {
   apiKey: process.env.REACT_APP_API_KEY,
   authDomain: process.env.REACT_APP_AUTH_DOMAIN,
@@ -66,7 +71,7 @@ const firebaseConfig = {
   storageBucket: process.env.REACT_APP_STORAGE_BUCKET,
   messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_ID
 };
-
+/* Les ressources etant tracker venant de firebase */
 const trackedResources = [
   {name: "orders",isPublic: true,},
   {name: "users",isPublic: true},
@@ -78,21 +83,28 @@ const trackedResources = [
   {name: "starters",isPublic: true},
   {name: "tables",isPublic: true}
 ];
-
-const authConfig = {
-  userProfilePath: '/users/',
-  userAdminProp: 'admin'//check if user is admin
-};
+/* Pour l'authentification */
+const authConfig = {userProfilePath: '/users/', userAdminProp: 'admin'};
 
 const shouldUseAuth = true;
-const dataProvider = base64Uploader(RestProvider(firebaseConfig, { trackedResources }));
+/* Pour l'accès au données (utilisation de provider firebase) */
+const dataProvider = addUploadCapability(RestProvider(firebaseConfig, { trackedResources }));
+/* Pour la traduction */
+const messages = {
+  fr: frenchMessages,
+}
+const i18nProvider = locale => messages[locale];
 
 class App extends React.Component {
   render() {
     return (
+      /* Configuration du composant de base admin de react admin */
       <Admin 
+        locale="fr"
+        i18nProvider={i18nProvider}
         dataProvider={dataProvider}
         authProvider={shouldUseAuth ? AuthProvider(authConfig) : null}>
+        {/* Atribue des composant au ressources venant de firebase */}
         <Resource name="extras" list={ExtraList} create={ExtraCreate} edit={ExtraEdit} show={ExtraShow} icon={AddCircleIcon}/>
         <Resource name="drinks" list={DrinkList} create={DrinkCreate} edit={DrinkEdit} show={DrinkShow} icon={LocalDrinkIcon}/>
         <Resource name="mains" list={MainList} create={MainCreate} edit={MainEdit} show={MainShow} icon={LocalPizzaIcon}/>

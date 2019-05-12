@@ -1,11 +1,18 @@
 import React from 'react';
-import { Show, SimpleShowLayout, TextField, DateField, EditButton, RichTextField } from 'react-admin';
+import { Show, SimpleShowLayout, TextField, ReferenceField, EditButton, RichTextField } from 'react-admin';
+
+const PostTitle = ({ record }) => {
+    return <span>Détail de {record ? `"${record.tableName}"` : ''}</span>;
+};
 
 export const TableShow = (props) => (
-    <Show title="Color Show" {...props}>
+    <Show title={<PostTitle/>} {...props}>
         <SimpleShowLayout>
-            <TextField source="tableName" />
-            <TextField source="tableZone" />
+            <TextField source="tableName" label="Nom"/>
+            <TextField source="tableZone" label="Zone"/>
+            <ReferenceField label="Restaurant" source="resto_id" reference="restos">
+                <TextField source="restaurantName" />
+            </ReferenceField>
         </SimpleShowLayout>
     </Show>
 );

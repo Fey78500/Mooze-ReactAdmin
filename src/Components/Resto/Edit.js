@@ -1,15 +1,23 @@
 import React from 'react';
-import {Edit, SimpleForm, ImageInput,ImageField, TextInput } from 'react-admin';
+import {Edit, SimpleForm, ImageInput,ImageField, TextInput, SelectInput } from 'react-admin';
+
+const PostTitle = ({ record }) => {
+    return <span>Modification de {record ? `"${record.restaurantName}"` : ''}</span>;
+};
 
 export const RestoEdit = (props) => (
-    <Edit title="Restaurant Edition" {...props}>
+    <Edit title={<PostTitle/>} {...props}>
         <SimpleForm>
-            <ImageInput source="image" label="Related Image" accept="image/*">
+            <ImageInput source="image" label="Image" accept="image/*" required multiple>
                 <ImageField source="src" title="title" />
             </ImageInput>
-            <TextInput source="restaurantName" />
-            <TextInput source="restaurantAddress" />
-            <TextInput source="restaurantType" />
+            <TextInput source="restaurantName" label="Nom du restaurant" required/>
+            <TextInput source="restaurantAddress" label="Adresse du restaurant" required/>
+            <SelectInput source="restaurantType" label="Type du restaurant" choices={[
+                { id: 'tacos', name: 'Tacos' },
+                { id: 'kebab', name: 'Kebab' },
+                { id: 'sushi', name: 'Sushi' },
+            ]} />
         </SimpleForm>
     </Edit>
 );

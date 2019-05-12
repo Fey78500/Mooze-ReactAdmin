@@ -5,8 +5,8 @@ import { Create, ReferenceInput, SimpleForm, SelectInput, TextInput, ImageInput,
 export const TableCreate = (props) => (
     <Create {...props}>
         <SimpleForm>
-            <TextInput source="tableName" />
-            <TextInput source="tableZone" />
+            <TextInput source="tableName" label="Nom"/>
+            <TextInput source="tableZone" label="Zone"/>
             <ReferenceInput label="Restaurant" source="resto_id" reference="restos">
                 <SelectInput optionText="restaurantName" />
             </ReferenceInput>

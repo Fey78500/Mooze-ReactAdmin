@@ -1,13 +1,13 @@
 import React from 'react';
-import { List, Datagrid, TextField,ImageField,EditButton,ShowButton  } from 'react-admin';
+import { List, Datagrid, TextField,ImageField,EditButton,ShowButton ,FunctionField } from 'react-admin';
 
 export const RestoList = (props) => (
-    <List {...props}>
+    <List title="Liste des restaurants" {...props}>
         <Datagrid>
-            <ImageField source="restaurantPictureUrl" />
-            <TextField source="restaurantName" />
-            <TextField source="restaurantAddress" />
-            <TextField source="restaurantType" />
+            <ImageField source="image[0].src" label="Image"/>
+            <TextField source="restaurantName" label="Nom"/>
+            <TextField source="restaurantAddress" label="Adresse"/>
+            <TextField source="restaurantType" label="Type"/>
             <ShowButton/>
             <EditButton />
         </Datagrid> 

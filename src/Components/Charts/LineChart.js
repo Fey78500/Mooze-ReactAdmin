@@ -16,7 +16,7 @@ let values;
 let hadData = false;
 function getData(data){
   values = Object.keys(data).map(function (i) {
-    let date = moment(data[i].createdAt).format("DD-MM-YYYY");
+    let date = moment(data[i].createdAt).format("DD/MM/YYYY");
     let exist = 0;
     valuesPerDay.map(function (item){
       if(item[0] === date){
@@ -24,19 +24,25 @@ function getData(data){
         exist = 1;
       }
     });
-    console.log(exist);
     if(exist != 1 || valuesPerDay.length === 0){
-      valuesPerDay.push([date,data[i].totalAmount])
+      valuesPerDay.push([date,data[i].totalAmount,moment(data[i].createdAt)])
     }
     return Object.values(data[i]);
   })
   if(values !== undefined && values.length !== 0){
-    valuesPerDay.unshift(['Jour','Chiffre d\'affaire']);
-    console.log(valuesPerDay)
+    valuesPerDay.sort(function(a,b){
+      return moment( a[2] ).format("YYYYMMDD") - moment( b[2] ).format("YYYYMMDD");
+    });
+    valuesPerDay.unshift(['Jour','Chiffre d\'affaire','nothing']);
+    valuesPerDay = valuesPerDay.map(function (item){
+      item.pop();
+      return item;
+    });
     graphData = valuesPerDay;
     hadData = true;
   }
 }
+
 export const LineGraph = (props) => (
   <ListController {...props.source}>
     {controllerProps => (
