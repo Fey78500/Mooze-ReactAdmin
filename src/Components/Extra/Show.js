@@ -1,11 +1,15 @@
 import React from 'react';
-import { Show, SimpleShowLayout, TextField, DateField, EditButton, RichTextField } from 'react-admin';
+import { Show, SimpleShowLayout, TextField } from 'react-admin';
+
+const PostTitle = ({ record }) => {
+    return <span>Détail de {record ? `"${record.extraName}"` : ''}</span>;
+};
 
 export const ExtraShow = (props) => (
-    <Show title="Color Show" {...props}>
+    <Show title={<PostTitle/>} {...props}>
         <SimpleShowLayout>
-            <TextField source="extraName" />
-            <TextField source="extraPrice" />
+            <TextField source="extraName" label="Nom"/>
+            <TextField source="extraPrice" label="Prix"/>
         </SimpleShowLayout>
     </Show>
 );

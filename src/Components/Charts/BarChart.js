@@ -22,7 +22,7 @@ function getData(data){
   values = Object.keys(data).map(function (i) {
     let date = data[i].createdAt;
     let day = moment(date).day();
-    if(valuesPerDay[day] != undefined){
+    if(valuesPerDay[day] !== undefined){
       valuesPerDay[day][1] += 1;
     }
     return Object.values(data[i]);

@@ -24,7 +24,7 @@ function getData(data){
         exist = 1;
       }
     });
-    if(exist != 1 || valuesPerDay.length === 0){
+    if(exist !== 1 || valuesPerDay.length === 0){
       valuesPerDay.push([date,data[i].totalAmount,moment(data[i].createdAt)])
     }
     return Object.values(data[i]);

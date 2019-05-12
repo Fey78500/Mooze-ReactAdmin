@@ -1,5 +1,5 @@
 import React from 'react';
-import { Show, SimpleShowLayout, TextField, ReferenceField, EditButton, RichTextField } from 'react-admin';
+import { Show, SimpleShowLayout, TextField, ReferenceField } from 'react-admin';
 
 const PostTitle = ({ record }) => {
     return <span>Détail de {record ? `"${record.tableName}"` : ''}</span>;

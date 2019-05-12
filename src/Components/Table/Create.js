@@ -1,6 +1,6 @@
 // in src/posts.js
 import React from 'react';
-import { Create, ReferenceInput, SimpleForm, SelectInput, TextInput, ImageInput, LongTextInput, ReferenceManyField, Datagrid, TextField, DateField, EditButton } from 'react-admin';
+import { Create, ReferenceInput, SimpleForm, SelectInput, TextInput } from 'react-admin';
 
 export const TableCreate = (props) => (
     <Create {...props}>

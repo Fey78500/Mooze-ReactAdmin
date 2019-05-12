@@ -1,12 +1,12 @@
 // in src/posts.js
 import React from 'react';
-import { Create, Edit, SimpleForm, DisabledInput, TextInput, DateInput, LongTextInput, ReferenceManyField, Datagrid, TextField, DateField, EditButton } from 'react-admin';
+import { Create, SimpleForm, TextInput} from 'react-admin';
 
 export const ExtraCreate = (props) => (
-    <Create {...props}>
+    <Create title="Création d'un supplément" {...props}>
         <SimpleForm>
-            <TextInput source="extraName" />
-            <TextInput source="extraPrice" />
+            <TextInput source="extraName" label="Nom"/>
+            <TextInput source="extraPrice" label="Prix"/>
         </SimpleForm>
     </Create>
 );

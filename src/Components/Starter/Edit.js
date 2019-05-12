@@ -1,5 +1,5 @@
 import React from 'react';
-import {Edit, SimpleForm, DisabledInput, TextInput,ImageInput ,ImageField } from 'react-admin';
+import {Edit, SimpleForm, TextInput,ImageInput ,ImageField } from 'react-admin';
 
 const PostTitle = ({ record }) => {
     return <span>Détail de {record ? `"${record.starterName}"` : ''}</span>;

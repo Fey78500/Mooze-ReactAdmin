@@ -1,15 +1,15 @@
 // in src/posts.js
 import React from 'react';
-import { Create, Edit, SimpleForm, DisabledInput, TextInput, ImageInput, ImageField, ReferenceManyField, Datagrid, TextField, DateField, EditButton } from 'react-admin';
+import { Create, SimpleForm, TextInput, ImageInput, ImageField} from 'react-admin';
 
 export const MainCreate = (props) => (
-    <Create {...props}>
+    <Create title="Création d'un plat" {...props}>
         <SimpleForm>
-            <ImageInput source="image" label="Related Image" accept="image/*">
+            <ImageInput source="image" label="Image" accept="image/*" placeholder="Cliquer ici ou déposer une image pour l'uploader" required multiple>
                 <ImageField source="src" title="title" />
             </ImageInput>
-            <TextInput source="mainName" />
-            <TextInput source="mainPrice" />
+            <TextInput source="mainName" label="Nom"/>
+            <TextInput source="mainPrice" label="Prix"/>
         </SimpleForm>
     </Create>
 );

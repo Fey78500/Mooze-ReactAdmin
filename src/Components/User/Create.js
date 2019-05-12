@@ -1,6 +1,6 @@
 // in src/posts.js
 import React from 'react';
-import { Create, Edit, SimpleForm, DisabledInput, TextInput, BooleanInput, LongTextInput, ReferenceManyField, Datagrid, TextField, DateField, EditButton } from 'react-admin';
+import { Create, SimpleForm, TextInput, BooleanInput} from 'react-admin';
 
 export const UserCreate = (props) => (
     <Create title="Création d'un utilisateur" {...props}>

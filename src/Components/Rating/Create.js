@@ -1,12 +1,12 @@
 // in src/posts.js
 import React from 'react';
-import { Create, Edit, SimpleForm, DisabledInput,ReferenceInput,SelectInput , TextInput, DateInput, LongTextInput, ReferenceManyField, Datagrid, TextField, DateField, EditButton } from 'react-admin';
+import { Create, SimpleForm,ReferenceInput,SelectInput , TextInput } from 'react-admin';
 
 export const RatingCreate = (props) => (
-    <Create {...props}>
+    <Create title="Création d'une note" {...props}>
         <SimpleForm>
-            <TextInput source="rate" />
-            <ReferenceInput label="User" source="userId" reference="users">
+            <TextInput source="rate" label="Note"/>
+            <ReferenceInput label="Utilisateur" source="userId" reference="users">
                 <SelectInput  optionText="displayName" />
             </ReferenceInput>
             <ReferenceInput label="Restaurant" source="restoId" reference="restos">

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Show, SimpleShowLayout, TextField,DateField, BooleanField,ReferenceField, EditButton, RichTextField } from 'react-admin';
+import { Show, SimpleShowLayout, TextField,DateField, BooleanField,ReferenceField } from 'react-admin';
 
 const PostTitle = ({ record }) => {
     return <span>Modification de la commande</span>;

@@ -1,10 +1,9 @@
 import React from 'react';
-import { Show, SimpleShowLayout, TextField, BooleanField, EditButton, RichTextField } from 'react-admin';
+import { Show, SimpleShowLayout, TextField, BooleanField } from 'react-admin';
 
 const PostTitle = ({ record }) => {
     return <span>Détail de {record ? `"${record.displayName}"` : ''}</span>;
 };
-
 
 export const UserShow = (props) => (
     <Show title={<PostTitle/>} {...props}>

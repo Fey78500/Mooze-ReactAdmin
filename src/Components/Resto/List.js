@@ -1,5 +1,5 @@
 import React from 'react';
-import { List, Datagrid, TextField,ImageField,EditButton,ShowButton ,FunctionField } from 'react-admin';
+import { List, Datagrid, TextField,ImageField,EditButton,ShowButton } from 'react-admin';
 
 export const RestoList = (props) => (
     <List title="Liste des restaurants" {...props}>
