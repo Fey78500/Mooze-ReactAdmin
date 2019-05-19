@@ -1,5 +1,5 @@
 import React from 'react';
-import {Edit, SimpleForm, ReferenceInput,SelectInput, TextInput } from 'react-admin';
+import {Edit, SimpleForm, ReferenceInput,SelectInput, TextInput,required } from 'react-admin';
 
 const PostTitle = ({ record }) => {
     return <span>Modification de {record ? `"${record.tableName}"` : ''}</span>;
@@ -9,9 +9,9 @@ const PostTitle = ({ record }) => {
 export const TableEdit = (props) => (
     <Edit title={<PostTitle/>} {...props}>
         <SimpleForm>
-            <TextInput source="tableName" label="Nom"/>
-            <TextInput source="tableZone" label="Zone"/>
-            <ReferenceInput label="Restaurant" source="resto_id" reference="restos">
+            <TextInput source="tableName" label="Nom" validate={[required()]}/>
+            <TextInput source="tableZone" label="Zone" validate={[required()]}/>
+            <ReferenceInput label="Restaurant" source="resto_id" reference="restos" validate={[required()]}>
                 <SelectInput optionText="restaurantName" />
             </ReferenceInput>
         </SimpleForm>

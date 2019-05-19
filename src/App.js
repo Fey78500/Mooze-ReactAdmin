@@ -105,16 +105,15 @@ class App extends React.Component {
         dataProvider={dataProvider}
         authProvider={shouldUseAuth ? AuthProvider(authConfig) : null}>
         {/* Atribue des composant au ressources venant de firebase */}
-        <Resource name="extras" list={ExtraList} create={ExtraCreate} edit={ExtraEdit} show={ExtraShow} icon={AddCircleIcon}/>
-        <Resource name="drinks" list={DrinkList} create={DrinkCreate} edit={DrinkEdit} show={DrinkShow} icon={LocalDrinkIcon}/>
-        <Resource name="mains" list={MainList} create={MainCreate} edit={MainEdit} show={MainShow} icon={LocalPizzaIcon}/>
-        <Resource name="restos" list={RestoList} create={RestoCreate} edit={RestoEdit} show={RestoShow} icon={RestaurantIcon}/>
-        <Resource name="starters" list={StarterList} create={StarterCreate} edit={StarterEdit} show={StarterShow} icon={LocalDiningIcon}/>
-        <Resource name="orders" list={OrderList} create={OrderCreate} edit={OrderEdit} show={OrderShow} icon={MonetizationOnIcon}/>
-        <Resource name="users" list={UserList} create={UserCreate} edit={UserEdit} show={UserShow} icon={PersonIcon}/>
-        <Resource name="tables" list={TableList} create={TableCreate} edit={TableEdit} show={TableShow} icon={ViewCarouselIcon}/>
-        <Resource name="ratings" list={RatingList} create={RatingCreate} edit={RatingEdit} show={RatingShow} icon={StarIcon}/>
-
+        <Resource name="orders" options={{ label: 'Commandes' }} list={OrderList} create={OrderCreate} edit={OrderEdit} show={OrderShow} icon={MonetizationOnIcon}/>
+        <Resource name="mains" options={{ label: 'Plats' }} list={MainList} create={MainCreate} edit={MainEdit} show={MainShow} icon={LocalPizzaIcon}/>
+        <Resource name="drinks" options={{ label: 'Boissons' }} list={DrinkList} create={DrinkCreate} edit={DrinkEdit} show={DrinkShow} icon={LocalDrinkIcon}/>
+        <Resource name="starters" options={{ label: 'Entrées' }} list={StarterList} create={StarterCreate} edit={StarterEdit} show={StarterShow} icon={LocalDiningIcon}/>
+        <Resource name="extras" options={{ label: 'Suppléments' }} list={ExtraList} create={ExtraCreate} edit={ExtraEdit} show={ExtraShow} icon={AddCircleIcon}/>
+        <Resource name="restos" options={{ label: 'Restaurants' }} list={RestoList} create={RestoCreate} edit={RestoEdit} show={RestoShow} icon={RestaurantIcon}/>
+        <Resource name="tables" options={{ label: 'Tables' }} list={TableList} create={TableCreate} edit={TableEdit} show={TableShow} icon={ViewCarouselIcon}/>
+        <Resource name="ratings" options={{ label: 'Notes' }} list={RatingList} create={RatingCreate} edit={RatingEdit} show={RatingShow} icon={StarIcon}/>
+        <Resource name="users" options={{ label: 'Utilisateurs' }} list={UserList} create={UserCreate} edit={UserEdit} show={UserShow} icon={PersonIcon}/>
       </Admin>
     );
   }
