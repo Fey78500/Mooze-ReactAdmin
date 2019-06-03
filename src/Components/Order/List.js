@@ -29,8 +29,11 @@ export const OrderList = (props) => (
                 <BooleanField source="checkedOut" label="Préparé ?"/>
                 <BooleanField source="delivered" label="Livré ?"/>
                 <DateField source="createdAt" label="Date"/>
-                <ReferenceField label="Client" source="user_id" reference="users">
+                <ReferenceField label="Client" source="ownerId" reference="users">
                     <TextField source="displayName" />
+                </ReferenceField>
+                <ReferenceField label="Restaurant" source="restoId" reference="restos">
+                    <TextField source="restaurantName" />
                 </ReferenceField>
                 <TextField source="totalAmount" label="Total"/>
                 <ShowButton/>

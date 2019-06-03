@@ -8,7 +8,7 @@ const PostTitle = ({ record }) => {
 export const RestoEdit = (props) => (
     <Edit title={<PostTitle/>} {...props}>
         <SimpleForm>
-            <ImageInput source="image" label="Image" accept="image/*" placeholder="Cliquer ici ou déposer une image pour l'uploader" required multiple>
+            <ImageInput source="image" label="Image" accept="image/*" placeholder="Cliquer ici ou déposer une image pour l'uploader">
                 <ImageField source="src" title="title" />
             </ImageInput>
             <TextInput source="restaurantName" label="Nom du restaurant" validate={[required()]}/>

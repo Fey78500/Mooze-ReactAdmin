@@ -4,7 +4,7 @@ import { List, Datagrid, TextField,ImageField,EditButton,ShowButton } from 'reac
 export const RestoList = (props) => (
     <List title="Liste des restaurants" {...props}>
         <Datagrid>
-            <ImageField source="image[0].src" label="Image"/>
+            <ImageField source="image" label="Image"/>
             <TextField source="restaurantName" label="Nom"/>
             <TextField source="restaurantAddress" label="Adresse"/>
             <TextField source="restaurantType" label="Type"/>
