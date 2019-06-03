@@ -8,7 +8,7 @@ const PostTitle = ({ record }) => {
 export const DrinkShow = (props) => (
     <Show title={<PostTitle/>} {...props}>
         <SimpleShowLayout>
-            <ImageField source="image[0].src" label="Image"/>
+            <ImageField source="image" label="Image"/>
             <TextField source="drinkName" label="Nom"/>
             <TextField source="drinkPrice" label="Prix"/>
         </SimpleShowLayout>
