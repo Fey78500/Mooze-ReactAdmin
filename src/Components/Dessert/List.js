@@ -11,12 +11,12 @@ const PostFilter = props => (
     
 );
 
-export const DrinkList = (props) => (
-    <List title="Liste des boissons" {...props}  filters={<PostFilter />}>
+export const DessertList = (props) => (
+    <List title="Liste des desserts" {...props}  filters={<PostFilter />}>
         <Datagrid>
             <ImageField source="image" label="Image"/>
-            <TextField source="drinkName" label="Nom"/>
-            <TextField source="drinkPrice" label="Prix"/>
+            <TextField source="name" label="Nom"/>
+            <TextField source="price" label="Prix"/>
             <ReferenceField label="Restaurant" source="restoId" reference="restos">
                 <TextField source="restaurantName" />
             </ReferenceField>

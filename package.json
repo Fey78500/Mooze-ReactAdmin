@@ -10,7 +10,7 @@
     "prop-types": "^15.7.2",
     "qrcode.react": "^0.9.3",
     "ra-auth-firebase": "^1.0.2",
-    "ra-data-firebase-client": "^0.1.6",
+    "ra-data-firebase-client": "https://github.com/welovedevs/ra-data-firebase-client.git#master",
     "ra-data-json-server": "^2.8.3",
     "ra-language-french": "^2.8.5",
     "react": "^16.8.6",

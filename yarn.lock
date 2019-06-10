@@ -8858,10 +8858,9 @@ ra-core@^2.8.5:
     redux-saga "~0.16.0"
     reselect "~3.0.0"
 
-ra-data-firebase-client@^0.1.6:
+"ra-data-firebase-client@https://github.com/welovedevs/ra-data-firebase-client.git#master":
   version "0.1.6"
-  resolved "https://registry.yarnpkg.com/ra-data-firebase-client/-/ra-data-firebase-client-0.1.6.tgz#6ac4153a9aa4a28de1b687180f7737a3fce99e03"
-  integrity sha512-Rm+S1BzzV+LAVb6sRuhmGrR0V3DXxmr1YkFMFHG5Ui9lhplV1mY1YQ15WCvn5NDlgsTLGUDS58jU75B7AA4g9w==
+  resolved "https://github.com/welovedevs/ra-data-firebase-client.git#08682c50a40374fc9a69f4567cb74056ede0e80e"
   dependencies:
     firebase "^5.5.0"
     prop-types "^15.6.0"

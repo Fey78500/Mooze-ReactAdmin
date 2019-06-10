@@ -1,5 +1,5 @@
 import React from 'react';
-import { List, Datagrid,DateField, BooleanField,ShowButton,CardActions,ExportButton,TextField,ReferenceField  } from 'react-admin';
+import { List,Filter,Pagination,ReferenceInput,SelectInput, Datagrid,DateField, BooleanField,ShowButton,CardActions,ExportButton,TextField,ReferenceField  } from 'react-admin';
 import { OrderEdit } from './Edit';
 import {LineGraph} from '../Charts/LineChart';
 import {BarGraph} from '../Charts/BarChart';
@@ -21,9 +21,21 @@ const PostActions = ({
         />
     </CardActions>
 );
+
+const PostFilter = props => (
+
+    <Filter {...props}>
+        <ReferenceInput label="Filtrer Restaurant" source="restoId" reference="restos" alwaysOn>
+            <SelectInput  optionText="restaurantName" />
+        </ReferenceInput>
+    </Filter>
+    
+);
+
+const PostPagination = props => <Pagination rowsPerPage={100} rowsPerPageOptions={[100,500]} {...props} />
 export const OrderList = (props) => (
     <div>
-        <List title="Liste des commandes" {...props} actions={<PostActions />} sort={{ field: 'checkedOut', order: 'DESC' }}>
+        <List title="Liste des commandes" {...props} actions={<PostActions />} filters={<PostFilter />}  pagination={<PostPagination />}>
             <Datagrid expand={<OrderEdit />}>
                 <BooleanField source="paid" label="Payé ?"/>
                 <BooleanField source="checkedOut" label="Préparé ?"/>

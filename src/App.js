@@ -46,6 +46,11 @@ import { RatingEdit } from './Components/Rating/Edit';
 import { RatingCreate } from './Components/Rating/Create';
 import { RatingList } from './Components/Rating/List';
 
+import { DessertShow } from './Components/Dessert/Show';
+import { DessertEdit } from './Components/Dessert/Edit';
+import { DessertCreate } from './Components/Dessert/Create';
+import { DessertList } from './Components/Dessert/List';
+
 /* Icone */
 import PersonIcon from '@material-ui/icons/Person';
 import AddCircleIcon from '@material-ui/icons/AddCircle';
@@ -56,6 +61,8 @@ import LocalDiningIcon from '@material-ui/icons/LocalDining';
 import LocalPizzaIcon from '@material-ui/icons/LocalPizza';
 import RestaurantIcon from '@material-ui/icons/Restaurant';
 import ViewCarouselIcon from '@material-ui/icons/ViewCarousel';
+import BubbleChartIcon from '@material-ui/icons/BubbleChart';
+
 
 import { RestProvider, AuthProvider } from 'ra-data-firebase-client';
 import addUploadCapability from './Base64Uploader'
@@ -74,6 +81,7 @@ const firebaseConfig = {
 /* Les ressources etant tracker venant de firebase */
 const trackedResources = [
   {name: "orders",isPublic: true,},
+  {name: "desserts",isPublic: true,},
   {name: "users",isPublic: true},
   {name: "drinks",isPublic: true},
   {name: "ratings",isPublic: true},
@@ -109,6 +117,7 @@ class App extends React.Component {
         <Resource name="mains" options={{ label: 'Plats' }} list={MainList} create={MainCreate} edit={MainEdit} show={MainShow} icon={LocalPizzaIcon}/>
         <Resource name="drinks" options={{ label: 'Boissons' }} list={DrinkList} create={DrinkCreate} edit={DrinkEdit} show={DrinkShow} icon={LocalDrinkIcon}/>
         <Resource name="starters" options={{ label: 'Entrées' }} list={StarterList} create={StarterCreate} edit={StarterEdit} show={StarterShow} icon={LocalDiningIcon}/>
+        <Resource name="desserts" options={{ label: 'Desserts' }} list={DessertList} create={DessertCreate} edit={DessertEdit} show={DessertShow} icon={BubbleChartIcon}/>
         <Resource name="extras" options={{ label: 'Suppléments' }} list={ExtraList} create={ExtraCreate} edit={ExtraEdit} show={ExtraShow} icon={AddCircleIcon}/>
         <Resource name="restos" options={{ label: 'Restaurants' }} list={RestoList} create={RestoCreate} edit={RestoEdit} show={RestoShow} icon={RestaurantIcon}/>
         <Resource name="tables" options={{ label: 'Tables' }} list={TableList} create={TableCreate} edit={TableEdit} show={TableShow} icon={ViewCarouselIcon}/>
