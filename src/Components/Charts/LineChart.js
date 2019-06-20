@@ -6,7 +6,7 @@ import moment from 'moment';
 const options = {
   title: "",
   hAxis: { title: "Jours des commandes" },
-  vAxis: { title: "Chiffres d'affaires totales", viewWindow: { min: 0 } },
+  vAxis: { title: "Chiffres d'affaires totales en euros", viewWindow: { min: 0 } },
   legend: "none"
 };
 let graphData = [];
@@ -15,7 +15,6 @@ let valuesPerDay = [];
 let values;
 let hadData = false;
 function getData(data){
-  console.log(data);
   values = Object.keys(data).map(function (i) {
     let date = moment(data[i].createdAt).format("DD/MM/YYYY");
     let exist = 0;

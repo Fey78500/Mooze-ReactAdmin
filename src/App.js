@@ -51,6 +51,11 @@ import { DessertEdit } from './Components/Dessert/Edit';
 import { DessertCreate } from './Components/Dessert/Create';
 import { DessertList } from './Components/Dessert/List';
 
+import { BiperShow } from './Components/Biper/Show';
+import { BiperEdit } from './Components/Biper/Edit';
+import { BiperCreate } from './Components/Biper/Create';
+import { BiperList } from './Components/Biper/List';
+
 /* Icone */
 import PersonIcon from '@material-ui/icons/Person';
 import AddCircleIcon from '@material-ui/icons/AddCircle';
@@ -62,7 +67,7 @@ import LocalPizzaIcon from '@material-ui/icons/LocalPizza';
 import RestaurantIcon from '@material-ui/icons/Restaurant';
 import ViewCarouselIcon from '@material-ui/icons/ViewCarousel';
 import BubbleChartIcon from '@material-ui/icons/BubbleChart';
-
+import SettingsRemoteIcon from '@material-ui/icons/SettingsRemote';
 
 import { RestProvider, AuthProvider } from 'ra-data-firebase-client';
 import addUploadCapability from './Base64Uploader'
@@ -80,6 +85,7 @@ const firebaseConfig = {
 };
 /* Les ressources etant tracker venant de firebase */
 const trackedResources = [
+  {name: "bipers",isPublic: true,},
   {name: "orders",isPublic: true,},
   {name: "desserts",isPublic: true,},
   {name: "users",isPublic: true},
@@ -123,6 +129,7 @@ class App extends React.Component {
         <Resource name="tables" options={{ label: 'Tables' }} list={TableList} create={TableCreate} edit={TableEdit} show={TableShow} icon={ViewCarouselIcon}/>
         <Resource name="ratings" options={{ label: 'Notes' }} list={RatingList} create={RatingCreate} edit={RatingEdit} show={RatingShow} icon={StarIcon}/>
         <Resource name="users" options={{ label: 'Utilisateurs' }} list={UserList} create={UserCreate} edit={UserEdit} show={UserShow} icon={PersonIcon}/>
+        <Resource name="bipers" options={{ label: 'Bippers' }} list={BiperList} create={BiperCreate} edit={BiperEdit} show={BiperShow} icon={SettingsRemoteIcon}/>
       </Admin>
     );
   }

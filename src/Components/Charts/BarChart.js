@@ -6,7 +6,7 @@ import moment from 'moment';
 
 const options = {
   title: "",
-  hAxis: { title: "Nombre de commande" },
+  hAxis: { title: "Nombre de commande par unité" },
   vAxis: { title: "Jour de la semaine", viewWindow: { min: 0 } },
   legend: "none"
 };

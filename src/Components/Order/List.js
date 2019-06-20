@@ -3,6 +3,7 @@ import { List,Filter,Pagination,ReferenceInput,SelectInput, Datagrid,DateField, 
 import { OrderEdit } from './Edit';
 import {LineGraph} from '../Charts/LineChart';
 import {BarGraph} from '../Charts/BarChart';
+import {SuccesFood} from '../Charts/SuccesFood';
 
 const PostActions = ({
     currentSort,
@@ -35,7 +36,7 @@ const PostFilter = props => (
 const PostPagination = props => <Pagination rowsPerPage={100} rowsPerPageOptions={[100,500]} {...props} />
 export const OrderList = (props) => (
     <div>
-        <List title="Liste des commandes" {...props} actions={<PostActions />} filters={<PostFilter />}  pagination={<PostPagination />}>
+        <List title="Liste des commandes" {...props} actions={<PostActions />} sort={{ field: 'createdAt', order: 'ASC' }} filters={<PostFilter />}  pagination={<PostPagination />}>
             <Datagrid expand={<OrderEdit />}>
                 <BooleanField source="paid" label="Payé ?"/>
                 <BooleanField source="checkedOut" label="Préparé ?"/>
@@ -56,6 +57,9 @@ export const OrderList = (props) => (
 
         <h2>Graphique nombre de couvert par jour de semaine</h2>
         <BarGraph source={{...props}}/>
+
+        <h2>Plats ayant le plus de succés</h2>
+        <SuccesFood source={{...props}}/>
     </div>
     
 );
