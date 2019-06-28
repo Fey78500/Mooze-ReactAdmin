@@ -12,13 +12,10 @@ const PostFilter = props => (
 );
 
 export const BiperList = (props) => (
-    <List title="Liste des entrées" {...props}  filters={<PostFilter />}>
+    <List title="Liste des entrées" {...props} bulkActions={false} filters={<PostFilter />}>
         <Datagrid>
             <TextField source="key" label="Serial"/> 
             <TextField source="name" label="Nom"/> 
-            <ReferenceField label="Commande" source="orderId" reference="orders">
-                <TextField source="createdAt" />
-            </ReferenceField>
             <ReferenceField label="Restaurant" source="restoId" reference="restos">
                 <TextField source="restaurantName" />
             </ReferenceField>

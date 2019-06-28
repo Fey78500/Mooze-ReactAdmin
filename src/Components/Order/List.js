@@ -1,5 +1,5 @@
 import React from 'react';
-import { List,Filter,Pagination,ReferenceInput,SelectInput, Datagrid,DateField, BooleanField,ShowButton,CardActions,ExportButton,TextField,ReferenceField  } from 'react-admin';
+import { List,Filter,Pagination,ReferenceInput,SelectInput, Datagrid,DateField, BooleanField,CardActions,ExportButton,TextField,ReferenceField  } from 'react-admin';
 import { OrderEdit } from './Edit';
 import {LineGraph} from '../Charts/LineChart';
 import {BarGraph} from '../Charts/BarChart';
@@ -29,18 +29,23 @@ const PostFilter = props => (
         <ReferenceInput label="Filtrer Restaurant" source="restoId" reference="restos" alwaysOn>
             <SelectInput  optionText="restaurantName" />
         </ReferenceInput>
+        <ReferenceInput label="Filtrer Utilisateurs" source="ownerId" reference="users" alwaysOn>
+            <SelectInput  optionText="displayName" />
+        </ReferenceInput>
     </Filter>
     
 );
 
-const PostPagination = props => <Pagination rowsPerPage={100} rowsPerPageOptions={[100,500]} {...props} />
+const PostPagination = props => {console.log(props);
+    return <Pagination  rowsPerPageOptions={[100,500]} {...props} perPage={100} rowsPerPage={100} />
+}
 export const OrderList = (props) => (
     <div>
-        <List title="Liste des commandes" {...props} actions={<PostActions />} sort={{ field: 'createdAt', order: 'ASC' }} filters={<PostFilter />}  pagination={<PostPagination />}>
-            <Datagrid expand={<OrderEdit />}>
-                <BooleanField source="paid" label="Payé ?"/>
-                <BooleanField source="checkedOut" label="Préparé ?"/>
-                <BooleanField source="delivered" label="Livré ?"/>
+        <List title="Liste des commandes" {...props} bulkActions={false} actions={<PostActions />} filters={<PostFilter />}  pagination={<PostPagination />}>
+            <Datagrid expand={<OrderEdit />} rowClick="expand" >
+                <BooleanField source="paid" label="Payée"/>
+                <BooleanField source="checkedOut" label="Préparée"/>
+                <BooleanField source="delivered" label="Livrée"/>
                 <DateField source="createdAt" label="Date"/>
                 <ReferenceField label="Client" source="ownerId" reference="users">
                     <TextField source="displayName" />
@@ -48,8 +53,10 @@ export const OrderList = (props) => (
                 <ReferenceField label="Restaurant" source="restoId" reference="restos">
                     <TextField source="restaurantName" />
                 </ReferenceField>
+                <ReferenceField label="Table" source="tableId" reference="tables">
+                    <TextField source="tableName" />
+                </ReferenceField>
                 <TextField source="totalAmount" label="Total"/>
-                <ShowButton/>
             </Datagrid>
         </List>
         <h2>Graphique des ventes</h2>

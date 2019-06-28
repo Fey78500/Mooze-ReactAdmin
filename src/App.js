@@ -73,7 +73,7 @@ import { RestProvider, AuthProvider } from 'ra-data-firebase-client';
 import addUploadCapability from './Base64Uploader'
 
 import frenchMessages from 'ra-language-french';
-
+import './App.css';
 /* Configuration firebase */
 const firebaseConfig = {
   apiKey: process.env.REACT_APP_API_KEY,

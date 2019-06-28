@@ -12,7 +12,7 @@ const PostFilter = props => (
 );
 
 export const RatingList = (props) => (
-    <List title="Liste des notes" {...props}  filters={<PostFilter />}>
+    <List title="Liste des notes" {...props} bulkActions={false}  filters={<PostFilter />}>
         <Datagrid>
             <TextField source="rate" label="Note"/>
             <ReferenceField label="Utilisateur" source="userId" reference="users">

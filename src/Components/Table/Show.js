@@ -1,5 +1,5 @@
 import React from 'react';
-import { Show, SimpleShowLayout, TextField, ReferenceField } from 'react-admin';
+import { Show, SimpleShowLayout, TextField, ReferenceField,FormDataConsumer } from 'react-admin';
 import QRCode from 'qrcode.react';
 
 const PostTitle = ({ record }) => {
@@ -18,16 +18,15 @@ link.addEventListener('click', function(ev) {
 function interval(){
     // do whatever you like here
     if(!document.querySelector('.HpQrcode')){
-        setTimeout(interval, 1000);
+        setTimeout(interval, 2000);
     }else{
         document.querySelector('.HpQrcode').appendChild(link);
     }
 }
 
-
 export const TableShow = (props) => (
 
-    <Show title={<PostTitle/>} {...props}>
+    <Show title={<PostTitle/>} {...props} >
         <SimpleShowLayout>
             {interval()}
             <TextField source="tableName" label="Nom"/>
@@ -35,15 +34,17 @@ export const TableShow = (props) => (
             <ReferenceField label="Restaurant" source="resto_id" reference="restos">
                 <TextField source="restaurantName" />
             </ReferenceField>
-            <div className="HpQrcode">
-            
-
-                <QRCode
-                    value={props.id}
-                    size={180}
-                    level={'H'}
-                />
-            </div>
+            <FormDataConsumer>
+                {({ formData, ...rest }) =>
+                    <div className="HpQrcode">  
+                        <QRCode
+                            value={`${formData.resto_id}.${formData.id}`}
+                            size={180}
+                            level={'H'}
+                        />    
+                    </div>
+                }
+            </FormDataConsumer>
         </SimpleShowLayout>
     </Show>
 );

@@ -2,7 +2,7 @@ import React from 'react';
 import { List, Datagrid, TextField,EditButton,ShowButton,BooleanField,EmailField } from 'react-admin';
 
 export const UserList = (props) => (
-    <List title="Liste des utilisateurs" {...props}>
+    <List title="Liste des utilisateurs" {...props} bulkActions={false}>
         <Datagrid>
             <TextField source="displayName" label="Nom"/>
             <EmailField source="email" label="Email"/>

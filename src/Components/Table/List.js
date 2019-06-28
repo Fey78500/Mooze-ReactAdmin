@@ -12,7 +12,7 @@ const PostFilter = props => (
 );
 
 export const TableList = (props) => (
-    <List title="Liste des tables" {...props}  filters={<PostFilter />}>
+    <List title="Liste des tables" {...props} bulkActions={false} filters={<PostFilter />}>
         <Datagrid>
             <TextField source="tableName" label="Nom"/>
             <TextField source="tableZone" label="Zone"/>

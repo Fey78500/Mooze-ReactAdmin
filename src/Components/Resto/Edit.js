@@ -13,6 +13,8 @@ export const RestoEdit = (props) => (
             </ImageInput>
             <TextInput source="restaurantName" label="Nom du restaurant" validate={[required()]}/>
             <TextInput source="restaurantAddress" label="Adresse du restaurant" validate={[required()]}/>
+            <TextInput source="latitude" label="Latitude" validate={[required()]}/>
+            <TextInput source="longitude" label="Longitude" validate={[required()]}/>
             <SelectInput source="restaurantType" label="Type du restaurant" validate={[required()]} choices={[
                 { id: 'tacos', name: 'Tacos' },
                 { id: 'kebab', name: 'Kebab' },
