@@ -5,6 +5,7 @@ import { Create, SimpleForm, TextInput, ImageInput, ImageField,NumberInput,Refer
 export const MainCreate = (props) => (
     <Create title="Création d'un plat" {...props}>
         <SimpleForm>
+            {console.log(props)}
             <ImageInput source="image" label="Image" accept="image/*" placeholder="Cliquer ici ou déposer une image pour l'uploader">
                 <ImageField source="src" title="title" />
             </ImageInput>

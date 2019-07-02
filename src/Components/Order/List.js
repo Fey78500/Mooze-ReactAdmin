@@ -36,13 +36,19 @@ const PostFilter = props => (
     
 );
 
+const search = "";
+
 const PostPagination = props => {console.log(props);
-    return <Pagination  rowsPerPageOptions={[100,500]} {...props} perPage={100} rowsPerPage={100} />
+    return <Pagination  rowsPerPageOptions={[]} {...props} perPage={100}/>
 }
 export const OrderList = (props) => (
     <div>
         <List title="Liste des commandes" {...props} bulkActions={false} actions={<PostActions />} filters={<PostFilter />}  pagination={<PostPagination />}>
             <Datagrid expand={<OrderEdit />} rowClick="expand" >
+                {props.history.location.search === search && (
+                    props.history.push('/orders?perPage=1000&order=ASC&sort=createdAt' + search  ),
+                    document.location.reload(true)
+                )}
                 <BooleanField source="paid" label="Payée"/>
                 <BooleanField source="checkedOut" label="Préparée"/>
                 <BooleanField source="delivered" label="Livrée"/>
@@ -56,7 +62,7 @@ export const OrderList = (props) => (
                 <ReferenceField label="Table" source="tableId" reference="tables">
                     <TextField source="tableName" />
                 </ReferenceField>
-                <TextField source="totalAmount" label="Total"/>
+                <TextField source="totalAmount" label="Total (en €)"/>
             </Datagrid>
         </List>
         <h2>Graphique des ventes</h2>

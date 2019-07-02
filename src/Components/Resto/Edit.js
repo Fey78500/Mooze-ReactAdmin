@@ -16,9 +16,9 @@ export const RestoEdit = (props) => (
             <TextInput source="latitude" label="Latitude" validate={[required()]}/>
             <TextInput source="longitude" label="Longitude" validate={[required()]}/>
             <SelectInput source="restaurantType" label="Type du restaurant" validate={[required()]} choices={[
-                { id: 'tacos', name: 'Tacos' },
-                { id: 'kebab', name: 'Kebab' },
-                { id: 'sushi', name: 'Sushi' },
+                { id: 'Tacos', name: 'Tacos' },
+                { id: 'Kebab', name: 'Kebab' },
+                { id: 'Sushi', name: 'Sushi' },
             ]} />
         </SimpleForm>
     </Edit>

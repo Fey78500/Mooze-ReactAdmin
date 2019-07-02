@@ -3,7 +3,7 @@ import {Edit, SimpleForm, BooleanInput,ReferenceInput,FormDataConsumer,choices,R
 const validateChoices = choices([true], 'Doit être coché');
 export const OrderEdit = (props) => (
     <Edit title=" " {...props}>
-        <SimpleForm form={`post_edit_${props.id}`}>
+        <SimpleForm form={`post_edit_${props.id}`} redirect={false}>
             <FormDataConsumer style={{ display: 'inline', float: 'left'}}>
                 {({ formData, ...rest }) => formData.checkedOut === true || formData.delivered === true ?
                     <BooleanInput source="paid" label="Payée" style={{ display: 'inline', float: 'left'}}  validate={[required(),validateChoices]}/>

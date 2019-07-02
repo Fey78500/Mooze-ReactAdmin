@@ -36,15 +36,15 @@ const autoFillAddress = (event)=>{
 export const RestoCreate = (props) => (
     <Create title="Ajout d'un restaurant" {...props} >
         <SimpleForm onChange={autoFillAddress}>
-            <ImageInput source="image" label="Image" accept="image/*" placeholder="Cliquer ici ou déposer une image pour l'uploader">
+            <ImageInput source="image" label="Image" accept="image/*" placeholder="Cliquer ici ou déposer une image pour l'uploader" validate={[required()]}>
                 <ImageField source="src" title="title" />
             </ImageInput>
             <TextInput source="restaurantName" label="Nom du restaurant" validate={[required()]}/>
             <TextInput source="restaurantAddress" label="Adresse du restaurant" validate={[required()]} onBlur={changeAddress}/>
             <SelectInput source="restaurantType" label="Type du restaurant" validate={[required()]} choices={[
-                { id: 'tacos', name: 'Tacos' },
-                { id: 'kebab', name: 'Kebab' },
-                { id: 'sushi', name: 'Sushi' },
+                { id: 'Tacos', name: 'Tacos' },
+                { id: 'Kebab', name: 'Kebab' },
+                { id: 'Sushi', name: 'Sushi' },
             ]} />
         </SimpleForm>
     </Create>

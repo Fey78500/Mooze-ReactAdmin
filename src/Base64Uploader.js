@@ -52,7 +52,6 @@ const addUploadCapabilities = requestHandler => (type, resource, params) => {
             }, function() {
             // Upload completed successfully, now we can get the download URL
                 return uploadTask.snapshot.ref.getDownloadURL().then(function(downloadURL) {
-                    //window.location.reload();
                     return requestHandler(type, resource, {
                         ...params,
                         data: {
