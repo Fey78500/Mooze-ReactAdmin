@@ -6,7 +6,7 @@ export const UserList = (props) => (
         <Datagrid>
             <TextField source="displayName" label="Nom"/>
             <EmailField source="email" label="Email"/>
-            <BooleanField source="admin" label="Admin ?"/>
+            <BooleanField source="admin" label="Admin"/>
             <ShowButton/>
             <EditButton />
         </Datagrid>

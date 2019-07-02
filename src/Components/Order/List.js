@@ -71,7 +71,7 @@ export const OrderList = (props) => (
         <h2>Graphique nombre de couvert par jour de semaine</h2>
         <BarGraph source={{...props}}/>
 
-        <h2>Plats ayant le plus de succés</h2>
+        <h2>Plats ayant le plus de succès</h2>
         <SuccesFood source={{...props}}/>
     </div>
     

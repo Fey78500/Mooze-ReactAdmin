@@ -6,7 +6,7 @@ import moment from 'moment';
 const options = {
   title: "",
   hAxis: { title: "Jours des commandes" },
-  vAxis: { title: "Chiffres d'affaires totales en euros", viewWindow: { min: 0 } },
+  vAxis: { title: "Chiffres d'affaires total en euros", viewWindow: { min: 0 } },
   legend: "none"
 };
 let graphData = [];
