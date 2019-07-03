@@ -1,6 +1,6 @@
 // in src/posts.js
 import React from 'react';
-import { Create, SimpleForm, TextInput,ImageInput,ImageField,NumberInput,required,number,minValue,maxValue,ReferenceInput,SelectInput} from 'react-admin';
+import { Create, SimpleForm, TextInput,ImageInput,ImageField,NumberInput,maxLength,required,number,minValue,maxValue,ReferenceInput,SelectInput} from 'react-admin';
 
 export const DrinkCreate = (props) => (
     <Create title="Création d'une boisson" {...props}>
@@ -9,6 +9,7 @@ export const DrinkCreate = (props) => (
                 <ImageField source="src" title="title" />
             </ImageInput>
             <TextInput source="drinkName" label="Nom" validate={[required()]}/>
+            <TextInput source="description" label="Description" validate={[required(),maxLength (20)]}/>
             <NumberInput source="drinkPrice" label="Prix"  validate={[required(), number(), minValue(0),maxValue(999)]}/>
             <ReferenceInput label="Restaurant" source="restoId" reference="restos" validate={[required()]}>
                 <SelectInput  optionText="restaurantName" />

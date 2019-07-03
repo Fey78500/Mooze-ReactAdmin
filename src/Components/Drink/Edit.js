@@ -1,5 +1,5 @@
 import React from 'react';
-import {Edit, SimpleForm,ImageInput,ImageField, TextInput,NumberInput,required,number,minValue,maxValue,ReferenceInput,SelectInput } from 'react-admin';
+import {Edit, SimpleForm,ImageInput,ImageField, TextInput,NumberInput,maxLength,required,number,minValue,maxValue,ReferenceInput,SelectInput } from 'react-admin';
 
 const PostTitle = ({ record }) => {
     return <span>Modification de {record ? `"${record.drinkName}"` : ''}</span>;
@@ -13,6 +13,7 @@ export const DrinkEdit = (props) => (
             </ImageInput>
 
             <TextInput source="drinkName" label="Nom" validate={[required()]}/>
+            <TextInput source="description" label="Description" validate={[required(),maxLength (20)]}/>
             <NumberInput source="drinkPrice" label="Prix"  validate={[required(), number(), minValue(0),maxValue(999)]}/>
             <ReferenceInput label="Restaurant" source="restoId" reference="restos" validate={[required()]}>
                 <SelectInput  optionText="restaurantName" />
